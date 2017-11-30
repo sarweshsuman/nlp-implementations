@@ -35,6 +35,10 @@ y_transformed = label_encoder.fit_transform(y)
 
 x_train,x_test,y_train,y_test=train_test_split(x,y_transformed,test_size=0.2)
 
+"""
+	Using Naive Bayes Multinomial model, however any other model can be used here as per requirement.
+"""
+
 text_classifier = Pipeline([('vect', CountVectorizer()),('tfidf', TfidfTransformer()),('clf', MultinomialNB()),])
 
 text_classifier.fit(x_train,y_train)
