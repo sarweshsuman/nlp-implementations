@@ -5,13 +5,17 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report
 
-""" Reading a sample dataset """
+""" 
+	Reading a sample dataset.
+	Change the file name as per need.
+	dataset is of format text|class
+"""
 
 fh = open('dataset.txt','r')
 lines = fh.readlines()
 fh.close()
 
-""" Assuming this dataset is cleansed """
+""" Assuming this dataset is already cleansed """
 
 x=[]
 y=[]
@@ -21,7 +25,10 @@ for ln in lines:
 	data,target = ln.split('|')
 	x.append(data)
 	y.append(target)
-
+"""
+	Using label encoder to convert class names like SECURITY UX_ANALYST to 0 1 which model can work with.
+"""
+	
 label_encoder = LabelEncoder()
 
 y_transformed = label_encoder.fit_transform(y)
