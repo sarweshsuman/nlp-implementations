@@ -39,6 +39,14 @@ x_train,x_test,y_train,y_test=train_test_split(x,y_transformed,test_size=0.2)
 	Using Naive Bayes Multinomial model, however any other model can be used here as per requirement.
 """
 
+"""
+  Creating pipeline which will first convert the text in the dataset to id ( number ) which are basically occurences of 
+  that word in the document and after that it will generate tfidf of those words. It will generate sparse matrix for 
+  each sentences in the dataset. For more info - http://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
+  Once the dataset is ready it is fed to classification model.
+  Similar steps are done while prediction
+"""
+
 text_classifier = Pipeline([('vect', CountVectorizer()),('tfidf', TfidfTransformer()),('clf', MultinomialNB()),])
 
 text_classifier.fit(x_train,y_train)
